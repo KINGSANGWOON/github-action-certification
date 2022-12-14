@@ -7,7 +7,7 @@ on:
 
 jobs:
   grade-learner:
-    if: github.event_name == 'registry_package' # 이건 on에 registry_package가 실행이 되어야만 실행한다.
+    if: github.event_name == 'workflow_dispatch' # 이건 on에 registry_package가 실행이 되어야만 실행한다.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -24,7 +24,7 @@ jobs:
           github-token: ${{secrets.TOKEN}}
           feedback: ${{ steps.events.outputs.reports }}
   troubleshoot-activity:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'registry_package'
     runs-on: ubuntu-latest
     steps:
       - name: troubleshooting steps
