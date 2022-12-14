@@ -7,14 +7,14 @@ on:
 
 jobs:
   grade-learner:
-    if: github.event_name == 'registry_package' # Apply additional filters as needed
+    if: github.event_name == 'registry_package' # 이건 on에 registry_package가 실행이 되어야만 실행한다.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
       - name: Grade exercise-publish-package activity
         id: events
-        uses: ./.github/actions/local-action
+        uses: ./.github/actions/local-action   # 이걸 실행함
         with:
           event_ctx: ${{toJSON(github.event)}}
 
